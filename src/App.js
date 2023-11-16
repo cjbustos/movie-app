@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import Navbar from "./components/Navbar";
+import MoviesList from "./components/MoviesList";
+import ThemeToggle from "./components/ThemeToggle";
+import { AppContainer } from "./App.styled";
+import MoviesContextProvider from "./contexts/MovieContext";
+
+export const ThemeContext = createContext();
 
 function App() {
+
+  const [isLightTheme, setIsLightTheme] = useState(false);
+  const updateThemeStyles = () => setIsLightTheme(!isLightTheme);
+
+  const themeStyles = `
+      color: ${isLightTheme ? '#555' : '#ddd'};
+      background: ${isLightTheme ? '#eee' : '#555'};
+  `
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <ThemeContext.Provider value={{ updateThemeStyles, themeStyles }}>
+        <MoviesContextProvider>
+          <Navbar />
+          <MoviesList />
+        </MoviesContextProvider>
+        <ThemeToggle />
+      </ThemeContext.Provider>
+    </AppContainer>
   );
 }
 
