@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ToggleContainer, ToogleButton } from "./theme-toggle.styled";
-import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const ThemeToggle = () => {
 

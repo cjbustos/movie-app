@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
 import { NavbarContainer } from "./navbar-styled.js";
 import { MovieContext } from "../../contexts/MovieContext.js";
+import { ThemeContext } from "../../contexts/ThemeContext.js";
 
 const Navbar = () => {
 

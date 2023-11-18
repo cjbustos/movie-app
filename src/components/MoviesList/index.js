@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
 import { MovieItem, MoviesContainer, MoviesUnorderedList } from "./movies-list.styled";
 import { MovieContext } from "../../contexts/MovieContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const MoviesList = () => {
 

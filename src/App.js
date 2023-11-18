@@ -1,31 +1,22 @@
-import { createContext, useState } from "react";
+import { AppContainer } from "./App.styled";
 import Navbar from "./components/Navbar";
 import MoviesList from "./components/MoviesList";
 import ThemeToggle from "./components/ThemeToggle";
-import { AppContainer } from "./App.styled";
 import MoviesContextProvider from "./contexts/MovieContext";
+import ThemeContextProvider from "./contexts/ThemeContext";
 
-export const ThemeContext = createContext();
 
 function App() {
 
-  const [isLightTheme, setIsLightTheme] = useState(false);
-  const updateThemeStyles = () => setIsLightTheme(!isLightTheme);
-
-  const themeStyles = `
-      color: ${isLightTheme ? '#555' : '#ddd'};
-      background: ${isLightTheme ? '#eee' : '#555'};
-  `
-
   return (
     <AppContainer>
-      <ThemeContext.Provider value={{ updateThemeStyles, themeStyles }}>
+      <ThemeContextProvider>
         <MoviesContextProvider>
           <Navbar />
           <MoviesList />
         </MoviesContextProvider>
         <ThemeToggle />
-      </ThemeContext.Provider>
+      </ThemeContextProvider>
     </AppContainer>
   );
 }
