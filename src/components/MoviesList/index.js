@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { MovieItem, MoviesContainer, MoviesUnorderedList } from "./movies-list.styled";
+import { MoviesContainer, MoviesUnorderedList } from "./movies-list.styled";
 import { MovieContext } from "../../contexts/MovieContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import Movie from "../Movie";
 
 const MoviesList = () => {
 
@@ -12,9 +13,8 @@ const MoviesList = () => {
         <MoviesContainer themeStyles={themeStyles}>
             <h2>Lista de películas</h2>
             <MoviesUnorderedList>
-                {movies.map(movie => (
-                    <MovieItem key={movie.id}>{movie.title}</MovieItem>
-                ))}
+                {movies.map((movie) => <Movie key={movie.id} movie={movie} />
+                )}
             </MoviesUnorderedList>
         </MoviesContainer>
     )

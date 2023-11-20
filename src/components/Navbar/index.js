@@ -10,12 +10,13 @@ const Navbar = () => {
 
     return (
         <NavbarContainer themeStyles={themeStyles}>
-            <h2>Lista de películas: {movies.length} </h2>
+            <h1>Lista de películas por ver</h1>
             <ul>
                 <li>Inicio</li>
                 <li>Acerca de</li>
                 <li>Contacto</li>
             </ul>
+            <span>Tienes {movies.length} por ver</span>
         </NavbarContainer>
     )
 }

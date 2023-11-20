@@ -5,13 +5,13 @@ export const MovieContext = createContext();
 const MoviesContextProvider = (props) => {
 
     const [movies, setMovies] = useState([
-        { title: 'Rocky I', id: 1 },
-        { title: 'Rambo I', id: 2 },
-        { title: 'Rambo II', id: 3 },
+        { director: 'X', title: 'Rocky I', id: 1 },
+        { director: 'X', title: 'Rambo I', id: 2 },
+        { director: 'X', title: 'Rambo II', id: 3 },
     ])
 
     return (
-        <MovieContext.Provider value={{ movies }}>
+        <MovieContext.Provider value={{ movies, setMovies }}>
             {props.children}
         </MovieContext.Provider>
     )
