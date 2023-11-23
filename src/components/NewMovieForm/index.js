@@ -2,16 +2,16 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FormContainer, InputField } from "./new-movie-form.styled";
 import { MovieContext } from "../../contexts/MovieContext";
+import { ACTIONS } from "../../reducers/moviesReducer";
 
 function generateId(movies) {
     const id = Math.max(...movies.map(movie => movie.id)) + 1
-    console.log(id)
     return id;
 }
 
 const NewMovieForm = () => {
 
-    const { movies, setMovies } = useContext(MovieContext);
+    const { movies, dispatch } = useContext(MovieContext);
     const { themeStyles } = useContext(ThemeContext);
     const [title, setTitle] = useState('');
     const [director, setDirector] = useState('');
@@ -19,7 +19,8 @@ const NewMovieForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
         const newMovie = { director: director, title: title, id: generateId(movies) };
-        setMovies(prevState => [...prevState, newMovie]);
+        dispatch({ type: ACTIONS.ADD_MOVIE, payload: newMovie })
+        //setMovies(prevState => [...prevState, newMovie]);
         setTitle('');
         setDirector('');
     }

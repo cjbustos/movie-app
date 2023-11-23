@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { MovieContainer } from "./movie.styled";
 import { MovieContext } from "../../contexts/MovieContext";
+import { ACTIONS } from "../../reducers/moviesReducer";
 
 const Movie = ({ movie }) => {
 
-    const { movies, setMovies } = useContext(MovieContext)
+    const { dispatch } = useContext(MovieContext)
 
     function deleteMovie(id) {
-        const filteredMovies = movies.filter(movie => movie.id !== id);
-        setMovies(filteredMovies);
+        dispatch({ type: ACTIONS.REMOVE_MOVIE, payload: id })
     }
 
     return (

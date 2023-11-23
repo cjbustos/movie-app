@@ -5,17 +5,16 @@ import ThemeToggle from "./components/ThemeToggle";
 import MoviesContextProvider from "./contexts/MovieContext";
 import ThemeContextProvider from "./contexts/ThemeContext";
 import NewMovieForm from "./components/NewMovieForm";
-import useAxios from "../src/hooks/useAxios"
 
 
 function App() {
 
-  const { data } = useAxios("http://localhost:8000/api");
+  //const { data } = useAxios("http://localhost:8000/api");
 
   return (
     <AppContainer>
       <ThemeContextProvider>
-        <MoviesContextProvider data={data}>
+        <MoviesContextProvider>
           <Navbar />
           <MoviesList />
           <NewMovieForm />
