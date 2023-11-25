@@ -6,10 +6,7 @@ import MoviesContextProvider from "./contexts/MovieContext";
 import ThemeContextProvider from "./contexts/ThemeContext";
 import NewMovieForm from "./components/NewMovieForm";
 
-
 function App() {
-
-  //const { data } = useAxios("http://localhost:8000/api");
 
   return (
     <AppContainer>

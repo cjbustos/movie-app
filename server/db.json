@@ -6,14 +6,24 @@
       "id": 1
     },
     {
-      "director": "Ridley Scott",
-      "title": "Alien I",
+      "director": "Quentin Tarantino",
+      "title": "Kill Bill",
       "id": 2
     },
     {
-      "director": "Ridley Scott",
-      "title": "Alien II",
+      "director": "Quentin Tarantino",
+      "title": "Pulp Fiction",
       "id": 3
+    },
+    {
+      "director": "Desconocido",
+      "title": "Gladiador",
+      "id": 4
+    },
+    {
+      "director": "Stephen King",
+      "title": "The Green Mile",
+      "id": 5
     }
   ]
 }

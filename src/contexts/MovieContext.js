@@ -1,32 +1,39 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer, useRef } from "react";
 import moviesReducer from "../reducers/moviesReducer";
+import axios from "axios";
 
 export const MovieContext = createContext();
 
-const initialState = [
+/* const initialState = [
     { director: 'X', title: 'Rocky I', id: 1 },
     { director: 'X', title: 'Rambo I', id: 2 },
     { director: 'X', title: 'Rambo II', id: 3 },
-];
+]; */
 
 const MoviesContextProvider = (props) => {
 
-    /*
-    [
-        { director: 'X', title: 'Rocky I', id: 1 },
-        { director: 'X', title: 'Rambo I', id: 2 },
-        { director: 'X', title: 'Rambo II', id: 3 },
-    ]
-    */
+    const [movies, dispatch] = useReducer(moviesReducer, []);
 
-    const [movies, dispatch] = useReducer(moviesReducer, initialState);
+    const initialized = useRef(false)
 
-    /*
-    setTimeout(() => {
-        setMovies(props.data)
-    }, "1000");
-    */
-   
+    useEffect(() => {
+
+        if (!initialized.current) {
+
+            initialized.current = true;
+
+            axios.get('http://localhost:8000/api')
+                .then(response => {
+                    // manejar respuesta exitosa
+                    console.log(response.data);
+                    dispatch({
+                        type: 'INITIALIZE',
+                        payload: response.data
+                    })
+                });
+        }
+    }, [])
+
     return (
         <MovieContext.Provider value={{ movies, dispatch }}>
             {props.children}
